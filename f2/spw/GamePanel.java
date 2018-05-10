@@ -20,21 +20,24 @@ public class GamePanel extends JPanel {
 		big.setBackground(Color.BLACK);
 	}
 
-	public void updateGameUI(GameReporter reporter){
+	public void updateGameUI(GameReporter reporter){  							
 		big.clearRect(0, 0, 400, 600);
 		
 		big.setColor(Color.WHITE);		
 		big.drawString(String.format("%08d", reporter.getScore()), 300, 20);
+	 //	big.drawString(String.format("%02d", reporter.getTime()), 50, 20);
+		big.drawString(String.format("%02d", reporter.getTime()/60) + " : " + String.format("%02d", reporter.getTime()%60) , 50, 20);
+		big.drawString( "Level : " + String.format("%02d", reporter.getLevel())  , 150, 20);
 		for(Sprite s : sprites){
-			s.draw(big);
+			s.draw(big);  							
 		}
 		
-		repaint();
+		repaint();      								
 	}
 
 	@Override
 	public void paint(Graphics g) {
-		Graphics2D g2d = (Graphics2D) g;
+		Graphics2D g2d = (Graphics2D) g;    			
 		g2d.drawImage(bi, null, 0, 0);
 	}
 
